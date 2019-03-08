@@ -22,12 +22,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Add Toolbar to use as app bar since drawer will slide under the
+        // default app bar.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Set the toolbar to act as the app's app bar and set home indicator
+        // to the hamburger menu drawable.
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        // Fetch the drawerLayout and frameLayout views.
         drawerLayout = findViewById(R.id.drawer_layout);
         frameLayout = findViewById(R.id.content_frame);
 
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         // Need this or else clicks won't work.
         navigationView.bringToFront();
 
-
+        // Use anonymous class to implement the onNavigationItemSelectedListener.
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -63,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    // When the home button is clicked, the drawer menu will open.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
